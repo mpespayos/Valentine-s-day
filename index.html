@@ -1,0 +1,157 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Evelyn's Wish ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <div class="card">
+      <!-- Screen 0: Book Cover -->
+      <section id="screen0" class="screen active" aria-live="polite">
+        <div class="badge">A Short Story</div>
+
+        <div class="book" aria-hidden="true">
+          <div class="bookCover">
+            <div class="bookTitle">Evelyn's Wish</div>
+            <div class="bookSub">Chapters I–III</div>
+            <div class="bookMark">❤️</div>
+          </div>
+          <div class="bookPages"></div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" onclick="openBook()">
+            Open <span class="arrow">→</span>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Screen 1 -->
+      <section id="screen1" class="screen" aria-live="polite">
+        <div class="badge">Chapter 1</div>
+        <h1>I've been so busy with midterms…</h1>
+        <p class="sub">
+          and Matthew still hasn't asked me to be his Valentine yet 😔
+        </p>
+
+        <div class="media">
+          <img src="frown.png" alt="Sad face" />
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" onclick="nextScreen(2)">
+            Next <span class="arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Screen 2 -->
+      <section id="screen2" class="screen" aria-live="polite">
+        <div class="badge">Chapter 2</div>
+        <h1>I wish Matthew would ask me…</h1>
+        <p class="sub">Maybe if I blow out the candles it’ll happen ✨</p>
+
+        <div class="media">
+          <img src="cake.png" alt="Cake" />
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" onclick="nextScreen(3)">
+            Blow Out Candles ✨
+          </button>
+        </div>
+      </section>
+
+      <!-- Screen 3 -->
+      <section id="screen3" class="screen" aria-live="polite">
+        <div class="badge">Final Chapter</div>
+        <h1>Will her wish come true?</h1>
+        <p class="sub">Choose wisely…</p>
+
+        <div class="choices">
+          <button class="choice yes" onclick="wishTrue()" id="yesBtn">
+            <div class="choiceMedia">
+              <img src="cute.png" alt="Cute" id="yesImg" />
+            </div>
+            <div class="choiceText">
+              <div class="choiceTitle">Your wish comes true 💕</div>
+              <div class="choiceHint">Tap me</div>
+            </div>
+          </button>
+
+          <button class="choice no" onclick="wishFalse()" id="noBtn">
+            <div class="choiceMedia">
+              <img src="frown.png" alt="Frown again" />
+            </div>
+            <div class="choiceText">
+              <div class="choiceTitle">Your wish will NOT come true 😢</div>
+              <div class="choiceHint">Try to tap me</div>
+            </div>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Screen 4 (success) -->
+      <section id="screen4" class="screen" aria-live="polite">
+        <div class="badge success">✅ Confirmed</div>
+        <h1>Of course it will… ❤️</h1>
+        <p class="sub big">Will you be my Valentine?</p>
+
+        <div class="bigHeart" aria-hidden="true">💖</div>
+
+        <div class="actions">
+          <button class="btn primary" onclick="valentineYes()">Yes.</button>
+          <button class="btn ghost" onclick="nextScreen(0)">Replay</button>
+        </div>
+
+        <!-- Photo frame (hidden until she clicks Yes) -->
+        <div class="frameWrap" id="frameWrap" hidden>
+          <div class="frameTitle">Our Valentine Photo</div>
+
+          <div class="frame">
+            <img id="selfiePreview" alt="Your selfie preview" />
+            <div class="framePlaceholder" id="framePlaceholder">
+              Add a selfie here 📸
+            </div>
+          </div>
+
+          <div class="uploadRow">
+            <label class="btn primary" for="selfieInput">Import selfie</label>
+            <input
+              id="selfieInput"
+              type="file"
+              accept="image/*"
+              capture="user"
+            />
+            <button class="btn ghost" type="button" onclick="clearSelfie()">Clear</button>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FULLSCREEN SPOTLIGHT OVERLAY -->
+  <div id="spotlight" class="spotlight" aria-hidden="true">
+    <img id="spotlightImg" src="" alt="">
+  </div>
+
+  <!-- Audio (local files) -->
+  <audio id="audioSad" src="sad.mp3" preload="auto" loop></audio>
+  <audio id="audioHappy" src="happy.mp3" preload="auto" loop></audio>
+  <audio id="audioDrumroll" src="drumroll.mp3" preload="auto" loop></audio>
+  <audio id="audioCheer" src="cheer.mp3" preload="auto"></audio>
+  <audio id="audioBeliever" src="believer.mp3" preload="auto" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
